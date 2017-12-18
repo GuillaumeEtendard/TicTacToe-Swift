@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tMc-sA-iU6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tMc-sA-iU6">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -233,10 +233,65 @@
         <scene sceneID="1YR-9I-YMh">
             <objects>
                 <viewController id="dFQ-vR-K2n" customClass="OnlineViewController" customModule="TicTacToe" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="A5j-jq-0cU">
+                    <view key="view" tag="-2" contentMode="scaleToFill" id="A5j-jq-0cU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="-3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Re6-fX-gJA">
+                                <rect key="frame" x="20" y="74" width="374" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view tag="-1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KR0-Zf-zXz">
+                                <rect key="frame" x="30" y="141" width="354" height="562"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="1" translatesAutoresizingMaskIntoConstraints="NO" id="ShZ-45-bQe" customClass="PlayView" customModule="TicTacToe" customModuleProvider="target">
+                                        <rect key="frame" x="30" y="121" width="98" height="111"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </view>
+                                    <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sBC-e9-Bf5" customClass="PlayView" customModule="TicTacToe" customModuleProvider="target">
+                                        <rect key="frame" x="127" y="121" width="102" height="111"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </view>
+                                    <view tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6zB-1G-mvB" customClass="PlayView" customModule="TicTacToe" customModuleProvider="target">
+                                        <rect key="frame" x="227" y="121" width="98" height="111"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </view>
+                                    <view tag="3" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WSu-c8-twK" customClass="PlayView" customModule="TicTacToe" customModuleProvider="target">
+                                        <rect key="frame" x="30" y="229" width="98" height="106"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </view>
+                                    <view tag="4" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3SZ-h1-EYR" customClass="PlayView" customModule="TicTacToe" customModuleProvider="target">
+                                        <rect key="frame" x="127" y="229" width="102" height="106"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </view>
+                                    <view tag="5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2VY-su-4ag" customClass="PlayView" customModule="TicTacToe" customModuleProvider="target">
+                                        <rect key="frame" x="227" y="229" width="98" height="106"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </view>
+                                    <view tag="6" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8EZ-xx-nHE" customClass="PlayView" customModule="TicTacToe" customModuleProvider="target">
+                                        <rect key="frame" x="30" y="335" width="98" height="110"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </view>
+                                    <view tag="7" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jmm-Xa-QB3" customClass="PlayView" customModule="TicTacToe" customModuleProvider="target">
+                                        <rect key="frame" x="127" y="335" width="102" height="110"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </view>
+                                    <view tag="8" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a1b-qI-mN6" customClass="PlayView" customModule="TicTacToe" customModuleProvider="target">
+                                        <rect key="frame" x="227" y="335" width="98" height="110"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </view>
+                                </subviews>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Re6-fX-gJA" firstAttribute="leading" secondItem="wNG-J5-nfi" secondAttribute="leading" constant="20" id="3Iy-0h-qUM"/>
+                            <constraint firstItem="Re6-fX-gJA" firstAttribute="top" secondItem="wNG-J5-nfi" secondAttribute="top" constant="10" id="V6n-kZ-Sqs"/>
+                            <constraint firstItem="wNG-J5-nfi" firstAttribute="trailing" secondItem="Re6-fX-gJA" secondAttribute="trailing" constant="20" id="prF-pZ-TUZ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wNG-J5-nfi"/>
                     </view>
                     <navigationItem key="navigationItem" id="gnS-Ws-uOb">
@@ -247,6 +302,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="playerTurn" destination="Re6-fX-gJA" id="Ewz-sC-qDR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="27g-Im-FP7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

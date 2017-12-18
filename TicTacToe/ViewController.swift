@@ -9,18 +9,50 @@
 import UIKit
 
 class PlayOnlineViewController: UIViewController{
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     @IBAction func playOnlineButtonPressed(_ sender: UIButton) {
-        TTTSocket.sharedInstance.join_queue()
-        TTTSocket.sharedInstance.join_game()
-        // Ecouter join_game, une fois que join game renvoie une donnée, faire perform segue
-        self.performSegue(withIdentifier: "ShowOnlineModal", sender: nil)
+        let alertController = UIAlertController(title: "Choose an username", message: "", preferredStyle: .alert)
+        
+        let saveAction = UIAlertAction(title: "Save", style: .default, handler: {
+            alert -> Void in
+            
+            let username = alertController.textFields![0] as UITextField
+            
+            TTTSocket.sharedInstance.join_queue(username: username.text!)
+            
+            TTTSocket.sharedInstance.socket.on("join_game") {data, ack in
+                self.performSegue(withIdentifier: "ShowOnlineModal", sender: data)
+            }
+            // Ecouter join_game, une fois que join game renvoie une donnée, faire perform segue
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: {
+            (action : UIAlertAction!) -> Void in
+            
+        })
+        
+        alertController.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "Enter Username"
+        }
+        
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowOnlineModal"{
+            let destinationNavigationController = segue.destination as! UINavigationController
+            let targetController = destinationNavigationController.topViewController as! OnlineViewController
+            targetController.data = sender as! [Any]
+        }
+    }
 }
 
 class ViewController: UIViewController {
@@ -97,7 +129,7 @@ class ModalViewController: UIViewController{
         cases[playView.tag] = self.playerTurn
 
         
-        let image = UIImage(named: "\(self.playerTurn).png")
+        let image = UIImage(named: "\(self.playerTurn == 1 ? "x" : "o").png")
         let imageView = UIImageView(image: image!)
         imageView.frame = CGRect(x: 0, y: 0, width: playView.frame.size.width, height: playView.frame.size.height)
         playView.addSubview(imageView)

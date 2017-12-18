@@ -12,7 +12,7 @@ import SocketIO
 class TTTSocket{
     public static let sharedInstance = TTTSocket()
     
-    let socket = SocketIOClient(socketURL: URL(string: "http://51.254.112.146:5666")!)
+    let socket = SocketIOClient(socketURL: URL(string: "http://51.254.112.146:5667")!)
 
     
     init(){
@@ -27,13 +27,7 @@ class TTTSocket{
         self.socket.disconnect()
     }
     
-    func join_queue(){
-        self.socket.emit("join_queue", "dude")
-    }
-    
-    func join_game(){
-        socket.on("join_game") {data, ack in
-            print("data \(data)")
-        }
+    func join_queue(username: String){
+        self.socket.emit("join_queue", username)
     }
 }
