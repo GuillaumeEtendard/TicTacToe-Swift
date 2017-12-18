@@ -8,27 +8,54 @@
 
 import UIKit
 
-class PlayOnlineViewController: UIViewController{
+extension UIViewController {
+    class func displaySpinner(onView : UIView) -> UIView {
+        let spinnerView = UIView.init(frame: onView.bounds)
+        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        let ai = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
+        ai.startAnimating()
+        ai.center = spinnerView.center
+        
+        DispatchQueue.main.async {
+            spinnerView.addSubview(ai)
+            onView.addSubview(spinnerView)
+        }
+        
+        return spinnerView
+    }
     
+    class func removeSpinner(spinner :UIView) {
+        DispatchQueue.main.async {
+            spinner.removeFromSuperview()
+        }
+    }
+}
+
+class PlayOnlineViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    
     @IBAction func playOnlineButtonPressed(_ sender: UIButton) {
+        
         let alertController = UIAlertController(title: "Choose an username", message: "", preferredStyle: .alert)
         
         let saveAction = UIAlertAction(title: "Save", style: .default, handler: {
             alert -> Void in
             
+            let spinnerView = UIViewController.displaySpinner(onView: self.view)
+
             let username = alertController.textFields![0] as UITextField
             
             TTTSocket.sharedInstance.join_queue(username: username.text!)
             
+            // Ecouter join_game, une fois que join game renvoie une donnée, faire perform segue
             TTTSocket.sharedInstance.socket.on("join_game") {data, ack in
                 self.performSegue(withIdentifier: "ShowOnlineModal", sender: data)
+                UIViewController.removeSpinner(spinner: spinnerView)
             }
-            // Ecouter join_game, une fois que join game renvoie une donnée, faire perform segue
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: {

@@ -52,7 +52,6 @@ class OnlineViewController: UIViewController{
                     }
                     
                     
-                    
                     let UIView = self.view.viewWithTag((item["index"] as? Int)!)!
                     
                         let image = UIImage(named: "\(playerPlayed).png")
