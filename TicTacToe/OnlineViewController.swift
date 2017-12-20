@@ -19,8 +19,6 @@ class OnlineViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        print(data)
         // Handle first data
         if let item = self.data?.first as? [String: Any],
             let currentTurn = item["currentTurn"] as? String{
@@ -28,7 +26,7 @@ class OnlineViewController: UIViewController{
                 let playerX = item["playerX"] as? String{
                 self.players = ["o" : playerO, "x" : playerX]
             }
-            self.playerTurn.text = item["player" + currentTurn.uppercased()] as? String
+            self.playerTurn.text = "It's \(self.players[currentTurn] as! String) turn"
         }
         TTTSocket.sharedInstance.socket.on("movement") {data, ack in
           
@@ -41,7 +39,7 @@ class OnlineViewController: UIViewController{
                     
                     if(item["win"] as? Bool != false){
                             self.playerTurn.text = "\(self.players[playerPlayed] as! String) wins"
-                            self.alertResult("And the winner is ...", "Player \(self.players[playerPlayed] as! String)")
+                            self.alertResult("And the winner is ...", self.players[playerPlayed] as! String)
                     }else{
                         self.playerTurn.text = "It's \(self.players[playerPlay] as! String) turn"
                     }
@@ -85,6 +83,16 @@ class OnlineViewController: UIViewController{
     
     public func alertResult(_ title: String, _ message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Share result", style: UIAlertActionStyle.default, handler: {
+            (action : UIAlertAction!) -> Void in
+            
+            let shareText = "\(message) won a very good game on Tic Tac Toe"
+            let textToShare = [ shareText ]
+            let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            
+            self.present(activityViewController, animated: true, completion: nil)
+        }))
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: {
             (action : UIAlertAction!) -> Void in
                 self.dismiss(animated: true, completion: nil)

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F01959E81FCC533500B2B993 /* OnlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01959E71FCC533500B2B993 /* OnlineViewController.swift */; };
-		F04CCCC81FB9D1A900A050A7 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04CCCC71FB9D1A900A050A7 /* ModalViewController.swift */; };
 		F04CCCCA1FB9F1A800A050A7 /* TTTSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04CCCC91FB9F1A800A050A7 /* TTTSocket.swift */; };
 		F0A6080C1FA0856D002FD48A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A6080B1FA0856D002FD48A /* AppDelegate.swift */; };
 		F0A6080E1FA0856D002FD48A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A6080D1FA0856D002FD48A /* ViewController.swift */; };
@@ -24,7 +23,6 @@
 		C1434E640AB3AB59733DDFFA /* Pods-TicTacToe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TicTacToe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TicTacToe/Pods-TicTacToe.debug.xcconfig"; sourceTree = "<group>"; };
 		DF6F4C40963B7BA19855DE27 /* Pods_TicTacToe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TicTacToe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F01959E71FCC533500B2B993 /* OnlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineViewController.swift; sourceTree = "<group>"; };
-		F04CCCC71FB9D1A900A050A7 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		F04CCCC91FB9F1A800A050A7 /* TTTSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTTSocket.swift; sourceTree = "<group>"; };
 		F0A608081FA0856D002FD48A /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0A6080B1FA0856D002FD48A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,7 +92,6 @@
 				F0A608141FA0856D002FD48A /* LaunchScreen.storyboard */,
 				F0A608171FA0856D002FD48A /* Info.plist */,
 				F0C30FFB1FB07A3100E1ED39 /* LastTableViewController.swift */,
-				F04CCCC71FB9D1A900A050A7 /* ModalViewController.swift */,
 				F01959E71FCC533500B2B993 /* OnlineViewController.swift */,
 			);
 			path = TicTacToe;
@@ -231,7 +228,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F04CCCC81FB9D1A900A050A7 /* ModalViewController.swift in Sources */,
 				F0A6080E1FA0856D002FD48A /* ViewController.swift in Sources */,
 				F0C30FFC1FB07A3100E1ED39 /* LastTableViewController.swift in Sources */,
 				F01959E81FCC533500B2B993 /* OnlineViewController.swift in Sources */,

@@ -12,7 +12,7 @@ import SocketIO
 class TTTSocket{
     public static let sharedInstance = TTTSocket()
     
-    let socket = SocketIOClient(socketURL: URL(string: "http://51.254.112.146:5667")!)
+    let socket = SocketIOClient(socketURL: URL(string: "http://51.254.112.146:5666")!)
 
     
     init(){

@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 extension UIViewController {
     class func displaySpinner(onView : UIView) -> UIView {
         let spinnerView = UIView.init(frame: onView.bounds)
@@ -77,7 +78,7 @@ class PlayOnlineViewController: UIViewController{
         if segue.identifier == "ShowOnlineModal"{
             let destinationNavigationController = segue.destination as! UINavigationController
             let targetController = destinationNavigationController.topViewController as! OnlineViewController
-            targetController.data = sender as! [Any]
+            targetController.data = sender as? [Any]
         }
     }
 }
@@ -123,7 +124,7 @@ class ModalViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        setPlayerTurnLabel("C\'est au joueur \(self.playerTurn)")
+        setPlayerTurnLabel("It's Player \(self.playerTurn) turn")
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -168,15 +169,14 @@ class ModalViewController: UIViewController{
             lastkill.append(winner == 1 ? ["dead": "Player 2", "winner": "Player 1"] : ["dead": "Player 1", "winner": "Player 2"])
             userDefaults.set(lastkill, forKey: "lastkill")
             alertResult("And the winner is ...", "Player \(winner)")
-            print(lastkill)
-            setPlayerTurnLabel("Le gagnant est \(winner)")
+            setPlayerTurnLabel("Player \(winner) wins")
             return
         }
 
         if(cases.contains(0) == false){
             lastkill.append(["draw": "Player 1 and 2"])
             userDefaults.set(lastkill, forKey: "lastkill")
-            setPlayerTurnLabel("Match nul")
+            setPlayerTurnLabel("Draw")
             alertResult("And the winner is ...", "Nobody")
             self.finalResult = 3
             return
@@ -189,7 +189,7 @@ class ModalViewController: UIViewController{
         }
     
         
-        setPlayerTurnLabel("C\'est au joueur \(self.playerTurn)")
+        setPlayerTurnLabel("It's Player \(self.playerTurn) turn")
     }
     
     public func checkWin() -> Int {
@@ -220,12 +220,12 @@ class ModalViewController: UIViewController{
 
 class PlayView: UIView{
     
-    override init(frame: CGRect) { // for using CustomView in code
+    override init(frame: CGRect) {
         super.init(frame: frame)
         self.commonInit()
     }
     
-    required init?(coder aDecoder: NSCoder) { // for using CustomView in IB
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.commonInit()
     }
@@ -239,14 +239,11 @@ class PlayView: UIView{
         let color = UIColor.init(red: 236, green: 240, blue: 241, alpha: 1)
         
         switch self.tag {
-        case 0:
-            self.layer.addBorders(edges: [.bottom, .right], color: color, thickness: 2)
-            break
-        case 2:
-            self.layer.addBorders(edges: [.bottom, .left], color: color, thickness: 2)
+        case 1:
+            self.layer.addBorders(edges: [.right, .left], color: color, thickness: 2)
             break
         case 3:
-            self.layer.addBorders(edges: [.bottom], color: color, thickness: 2)
+            self.layer.addBorders(edges: [.top, .bottom], color: color, thickness: 2)
             break
         case 4:
             self.layer.addBorders(edges: [.all], color: color, thickness: 2)
@@ -306,5 +303,14 @@ extension CALayer {
             self.addSublayer(border)
         }
         
+    }
+}
+
+
+class HistoryViewController : UIViewController {
+    @IBOutlet weak var textView: UITextView!
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        textView.setContentOffset(CGPoint.zero, animated: false)
     }
 }
