@@ -67,7 +67,10 @@ class PlayOfflineViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
         self.gamesPlayed.text = "0 Games Played"
+        self.player1Score.text = "Player 1 : 0"
+        self.player2Score.text = "Player 2 : 0"
     }
+
     @IBAction func playButtonPressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: "ShowModal", sender: nil)
     }
