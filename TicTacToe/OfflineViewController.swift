@@ -32,67 +32,27 @@ extension UIViewController {
     }
 }
 
-class PlayOnlineViewController: UIViewController{
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    
-    @IBAction func playOnlineButtonPressed(_ sender: UIButton) {
-        
-        let alertController = UIAlertController(title: "Choose an username", message: "", preferredStyle: .alert)
-        
-        let saveAction = UIAlertAction(title: "Save", style: .default, handler: {
-            alert -> Void in
-            
-            let spinnerView = UIViewController.displaySpinner(onView: self.view)
 
-            let username = alertController.textFields![0] as UITextField
-            
-            TTTSocket.sharedInstance.join_queue(username: username.text!)
-            
-            // Ecouter join_game, une fois que join game renvoie une donnée, faire perform segue
-            TTTSocket.sharedInstance.socket.on("join_game") {data, ack in
-                self.performSegue(withIdentifier: "ShowOnlineModal", sender: data)
-                UIViewController.removeSpinner(spinner: spinnerView)
-            }
-        })
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: {
-            (action : UIAlertAction!) -> Void in
-            
-        })
-        
-        alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "Enter Username"
-        }
-        
-        alertController.addAction(saveAction)
-        alertController.addAction(cancelAction)
-        
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowOnlineModal"{
-            let destinationNavigationController = segue.destination as! UINavigationController
-            let targetController = destinationNavigationController.topViewController as! OnlineViewController
-            targetController.data = sender as? [Any]
-        }
-    }
-}
+class PlayOfflineViewController: UIViewController {
 
-class ViewController: UIViewController {
-
+    @IBOutlet weak var gamesPlayed: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            let lastkill = UserDefaults.standard.array(forKey: "lastkill") as? Array<[String: String]> ?? Array<[String: String]>()
+            
+            self.gamesPlayed.text = "\(lastkill.count) Games Played"
+        }
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+       
     }
     @IBAction func clearCache(_ sender: UIButton) {
         let prefs = UserDefaults.standard
@@ -100,6 +60,7 @@ class ViewController: UIViewController {
         let alert = UIAlertController(title: "Cache", message: "Cache cleared", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+        self.gamesPlayed.text = "0 Games Played"
     }
     @IBAction func playButtonPressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: "ShowModal", sender: nil)
@@ -107,7 +68,7 @@ class ViewController: UIViewController {
 }
 
 
-class ModalViewController: UIViewController{
+class OfflineModalViewController: UIViewController{
     var playerTurn: Int = 1
     
     var turns: [String: [Int]] = [:]
@@ -142,7 +103,7 @@ class ModalViewController: UIViewController{
     }
     
     @IBAction func closeButtonPressed(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     
@@ -261,9 +222,6 @@ class PlayView: UIView{
     }
 }
 
-class Player{
-    
-}
 
 extension CALayer {
     func addBorders(edges: [UIRectEdge], color: UIColor, thickness: CGFloat) {
@@ -306,11 +264,3 @@ extension CALayer {
     }
 }
 
-
-class HistoryViewController : UIViewController {
-    @IBOutlet weak var textView: UITextView!
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        textView.setContentOffset(CGPoint.zero, animated: false)
-    }
-}

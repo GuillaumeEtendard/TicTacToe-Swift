@@ -10,11 +10,12 @@
 		F01959E81FCC533500B2B993 /* OnlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01959E71FCC533500B2B993 /* OnlineViewController.swift */; };
 		F04CCCCA1FB9F1A800A050A7 /* TTTSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04CCCC91FB9F1A800A050A7 /* TTTSocket.swift */; };
 		F0A6080C1FA0856D002FD48A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A6080B1FA0856D002FD48A /* AppDelegate.swift */; };
-		F0A6080E1FA0856D002FD48A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A6080D1FA0856D002FD48A /* ViewController.swift */; };
+		F0A6080E1FA0856D002FD48A /* OfflineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A6080D1FA0856D002FD48A /* OfflineViewController.swift */; };
 		F0A608111FA0856D002FD48A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0A6080F1FA0856D002FD48A /* Main.storyboard */; };
 		F0A608131FA0856D002FD48A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0A608121FA0856D002FD48A /* Assets.xcassets */; };
 		F0A608161FA0856D002FD48A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0A608141FA0856D002FD48A /* LaunchScreen.storyboard */; };
 		F0C30FFC1FB07A3100E1ED39 /* LastTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C30FFB1FB07A3100E1ED39 /* LastTableViewController.swift */; };
+		F0DB81D01FED669A00D7B61A /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DB81CF1FED669A00D7B61A /* HistoryViewController.swift */; };
 		FC77B2897354DE7DB95C9464 /* Pods_TicTacToe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF6F4C40963B7BA19855DE27 /* Pods_TicTacToe.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,12 +27,13 @@
 		F04CCCC91FB9F1A800A050A7 /* TTTSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTTSocket.swift; sourceTree = "<group>"; };
 		F0A608081FA0856D002FD48A /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0A6080B1FA0856D002FD48A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F0A6080D1FA0856D002FD48A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F0A6080D1FA0856D002FD48A /* OfflineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineViewController.swift; sourceTree = "<group>"; };
 		F0A608101FA0856D002FD48A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F0A608121FA0856D002FD48A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0A608151FA0856D002FD48A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0A608171FA0856D002FD48A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0C30FFB1FB07A3100E1ED39 /* LastTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastTableViewController.swift; sourceTree = "<group>"; };
+		F0DB81CF1FED669A00D7B61A /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				F0A6080B1FA0856D002FD48A /* AppDelegate.swift */,
-				F0A6080D1FA0856D002FD48A /* ViewController.swift */,
+				F0A6080D1FA0856D002FD48A /* OfflineViewController.swift */,
 				F04CCCC91FB9F1A800A050A7 /* TTTSocket.swift */,
 				F0A6080F1FA0856D002FD48A /* Main.storyboard */,
 				F0A608121FA0856D002FD48A /* Assets.xcassets */,
@@ -93,6 +95,7 @@
 				F0A608171FA0856D002FD48A /* Info.plist */,
 				F0C30FFB1FB07A3100E1ED39 /* LastTableViewController.swift */,
 				F01959E71FCC533500B2B993 /* OnlineViewController.swift */,
+				F0DB81CF1FED669A00D7B61A /* HistoryViewController.swift */,
 			);
 			path = TicTacToe;
 			sourceTree = "<group>";
@@ -228,9 +231,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0A6080E1FA0856D002FD48A /* ViewController.swift in Sources */,
+				F0A6080E1FA0856D002FD48A /* OfflineViewController.swift in Sources */,
 				F0C30FFC1FB07A3100E1ED39 /* LastTableViewController.swift in Sources */,
 				F01959E81FCC533500B2B993 /* OnlineViewController.swift in Sources */,
+				F0DB81D01FED669A00D7B61A /* HistoryViewController.swift in Sources */,
 				F0A6080C1FA0856D002FD48A /* AppDelegate.swift in Sources */,
 				F04CCCCA1FB9F1A800A050A7 /* TTTSocket.swift in Sources */,
 			);

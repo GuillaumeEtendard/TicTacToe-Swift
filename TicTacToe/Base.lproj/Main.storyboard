@@ -50,7 +50,7 @@
         <!--Play Offline-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TicTacToe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="PlayOfflineViewController" customModule="TicTacToe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -75,6 +75,12 @@
                                     <action selector="clearCache:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7XU-h0-yhm"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Games Played" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSe-Zy-DrM">
+                                <rect key="frame" x="145.33333333333334" y="477.66666666666669" width="123.66666666666666" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -82,11 +88,14 @@
                             <constraint firstItem="zKU-ji-g5d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="baB-bW-9yO"/>
                             <constraint firstItem="fYd-d4-j1F" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fCf-8c-Xxa"/>
                             <constraint firstItem="zKU-ji-g5d" firstAttribute="top" secondItem="fYd-d4-j1F" secondAttribute="bottom" constant="30" id="sB1-uZ-LIR"/>
+                            <constraint firstItem="xSe-Zy-DrM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="x9n-Pj-Ved"/>
+                            <constraint firstItem="xSe-Zy-DrM" firstAttribute="top" secondItem="zKU-ji-g5d" secondAttribute="bottom" constant="30" id="zp2-yu-oVf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Play Offline" image="play" id="wZj-cY-Zad"/>
                     <connections>
+                        <outlet property="gamesPlayed" destination="xSe-Zy-DrM" id="pbC-9o-zdw"/>
                         <segue destination="6dq-tU-zg1" kind="presentation" identifier="ShowModal" id="JFL-bF-uwD"/>
                     </connections>
                 </viewController>
@@ -181,10 +190,10 @@ In 1975, tic-tac-toe was also used by MIT students to demonstrate the computat
             </objects>
             <point key="canvasLocation" x="830" y="917"/>
         </scene>
-        <!--Modal View Controller-->
+        <!--Offline Modal View Controller-->
         <scene sceneID="BMq-6k-rq2">
             <objects>
-                <viewController storyboardIdentifier="ModalViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eZF-j1-NJs" customClass="ModalViewController" customModule="TicTacToe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ModalViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eZF-j1-NJs" customClass="OfflineModalViewController" customModule="TicTacToe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" tag="-1" contentMode="scaleToFill" id="8w3-D7-Mjg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -287,10 +296,10 @@ In 1975, tic-tac-toe was also used by MIT students to demonstrate the computat
             </objects>
             <point key="canvasLocation" x="1700" y="916"/>
         </scene>
-        <!--Online View Controller-->
+        <!--Online Modal View Controller-->
         <scene sceneID="1YR-9I-YMh">
             <objects>
-                <viewController id="dFQ-vR-K2n" customClass="OnlineViewController" customModule="TicTacToe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dFQ-vR-K2n" customClass="OnlineModalViewController" customModule="TicTacToe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" tag="-3" contentMode="scaleToFill" id="A5j-jq-0cU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
