@@ -35,6 +35,8 @@ extension UIViewController {
 
 class PlayOfflineViewController: UIViewController {
 
+    @IBOutlet weak var player1Score: UILabel!
+    @IBOutlet weak var player2Score: UILabel!
     @IBOutlet weak var gamesPlayed: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,8 +46,12 @@ class PlayOfflineViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         DispatchQueue.main.async {
             let lastkill = UserDefaults.standard.array(forKey: "lastkill") as? Array<[String: String]> ?? Array<[String: String]>()
-            
+            let player1Score = lastkill.filter{$0 == ["dead": "Player 2", "winner": "Player 1"]}.count
+            let player2Score = lastkill.filter{$0 == ["dead": "Player 1", "winner": "Player 2"]}.count
+
             self.gamesPlayed.text = "\(lastkill.count) Games Played"
+            self.player1Score.text = "Player 1 : \(player1Score)"
+            self.player2Score.text = "Player 2 : \(player2Score)"
         }
     }
 
